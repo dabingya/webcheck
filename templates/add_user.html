@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加域名页</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+</head>
+<body>
+<div class="header" >
+	<div class='content'>
+        <a href="/"><img class="logo" src='/static/image/logo.png' /></a>
+		网站运行状态
+	</div>
+</div>
+{{ aa }}
+<div class="maincontent">
+    <form action="{% url 'add_user' %}" method="post">
+    <table class="table table-striped add-table">
+        <thead>
+            <tr><td colspan="2">添加人员</td></tr>
+        </thead>
+        <tbody>
+            <tr><td width="200px;">所属业务线</td>
+                <td>
+                    <select name="bussiness_line">
+                        {% for b in bussiness_line_objs %}
+                            <option value="{{ b.id }}">{{ b.name }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>人员名称（企业微信名称）</td>
+                <td class="table-left"><input type="text" value="{{ user_form. username.value }}" name="username" />
+                <span class="errtip">{{ error.username.0 }}</span>
+                </td>
+            </tr>
+            <tr><td colspan="2" >
+                <button type="submit" class="btn btn-danger">确认</button>
+                <a href="{% url 'index' %}"><span class="btn btn-default">取消</span></a>
+            </td></tr>
+        </tbody>
+    </table>
+    </form>
+</div>
+
+</body>
+</html>

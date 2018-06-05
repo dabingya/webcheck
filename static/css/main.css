@@ -1,0 +1,87 @@
+/* 头部 */
+/** {
+	margin: 0;
+	padding: 0;
+}*/
+.header {
+	width: 100%;
+	min-width: 1250px;
+	height: 50px;
+	background: #23527c;
+}
+
+.header .content {
+	width: 1250px;
+	margin: 0 auto;
+	line-height: 50px;
+	font-size: 17px;
+	color: #efefef;
+}
+
+.header .content img {
+	width: 100px;
+	margin: 10px 10px 0 20px;
+	float: left;
+}
+
+.maincontent {
+	width: 1250px;
+	margin: 20px auto;
+}
+
+/*提示信息*/
+.myinfo {
+	display: inline-block;
+	height: 25px;
+	text-align: center;
+	border-radius: 4px;
+	line-height: 25px;
+	/*background: #449d44;*/
+	color: #fff;
+}
+
+.code {
+	width: 15px;
+	height: 15px;
+	line-height: 12px;
+	border-radius: 50%;
+}
+
+.msg {
+	width: 100px;
+}
+
+/*增加内容*/
+.add-table{
+	width: 500px;
+	margin: 50px auto 0;
+	line-height: 30px;
+	text-align: center;
+}
+
+.add-table thead td {
+	color: #fff;
+	background: #ef8c29;
+}
+
+.add-table input{
+	width: 100%;
+	height: 30px;
+	text-indent: 5px;
+	margin: 0 auto;
+}
+
+.add-table select{
+	width: 100%;
+	height: 30px;
+	text-indent: 5px;
+	margin: 0 auto;
+}
+
+.table-left {
+	text-align: left;
+}
+
+.errtip {
+	color: #ac2925;
+}

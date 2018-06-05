@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <meta http-equiv="refresh" content="10">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+</head>
+<body>
+<div class="header" >
+	<div class='content'>
+        <a href="/"><img class="logo" src='/static/image/logo.png' /></a>
+		添加检测域名
+	</div>
+</div>
+
+<div class="maincontent">
+    <a href="{% url 'add_domain' %}"><button  class="btn btn-success" >添加域名</button></a>
+    <a href="{% url 'add_user' %}"><button  class="btn btn-success" >添加人员</button></a>
+    &nbsp;&nbsp;&nbsp;&nbsp; <span style="color:#d43f3a;">数据延迟{{ ctime }}s</span>
+    <table class="table table-hover">
+        <thead>
+            <tr><td>序号</td><td>域名</td><td width="300">运行状态</td></tr>
+        </thead>
+        <tbody>
+            {% for d in domain_objs %}
+                <tr>
+                    <td>{{ forloop.counter }}</td><td>{{ d.domain }}</td>
+                    <td class="test" data-id="{{ d.id }}" >
+                        <span class="myinfo code" style="background: {% if d.want_code == d.ret_code %}{{ color_red }}{% else %}{{ color_green }}{% endif %}"></span>&nbsp;&nbsp;&nbsp;
+                        <span class="myinfo msg" style="background: {% if d.want_code == d.ret_code %}{{ color_red }}{% else %}{{ color_green }}{% endif %}">{{ d.ret_keyword }}</span>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<!--
+<script src="static/js/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+       $(".test").each(function () {
+           getData(this, $(this).data("id"));
+       })
+    });
+    function getData(self,id) {
+        $.ajax({
+            url: "/get_data/"+id,
+            type: "get",
+            success:function (arg) {
+                console.log(id);
+                arg = JSON.parse(arg);
+                //$(self).html(arg.msg+arg.status)
+                //$(self).find('.code').html(arg.status);
+                // 判断状态
+                if (arg.status){
+                    $(self).find('.code').css('background','#449d44')
+                    $(self).find('.msg').css('background','#449d44')
+                }
+                else {
+                    $(self).find('.code').css('background','#ce0606')
+                    $(self).find('.msg').css('background','#ce0606')
+                }
+
+                $(self).find('.msg').html(arg.msg)
+            }
+
+        })
+
+    }
+</script>
+-->
+</body>
+</html>
